@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="wrap">
+        <h1>CASE SELASA</h1>
+        <input type="text" name="" id="name" placeholder="name" />
+        <input type="text" name="" id="role" placeholder="role" />
+        <button onclick="startGame()">Start</button>
+        <div id="hasil1"></div>
+      </div>
+      <div class="wrap">
+        <h1>CASE RABU</h1>
+        <input
+          type="number"
+          id="nilai"
+          placeholder="masukan angka yang ingin di faktorialkan"
+        />
+        <button onclick="faktorial()">Hitung</button>
+        <div id="hasil2"></div>
+      </div>
+      <div class="wrap">
+        <h1>CASE KAMIS</h1>
+        <input type="number" id="jumlah" placeholder="masukan jumlah angka" />
+        <button onclick="logic()">Hitung</button>
+        <div id="hasil3"></div>
+      </div>
+      <div class="wrap">
+        <h1>CASE JUMAT</h1>
+        <p>array [5,4,9,10,60]</p>
+        <button onclick="findMaxMin()">Hitung</button>
+        <div id="hasil4"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function startGame() {
+        const name = document.getElementById("name").value;
+        const role = document.getElementById("role").value;
+        const output = document.getElementById("hasil1");
+
+        if (name == "") {
+          alert("nama tidak boleh kosong");
+        } else if (role == "") {
+          alert("peran harus diisi");
+        } else {
+          output.innerHTML = `<p> ${name} berperan sebagai ${role} </p>`;
+        }
+      }
+
+      function faktorial() {
+        const nilai = document.getElementById("nilai").value;
+        const output = document.getElementById("hasil2");
+
+        const hitung = (nilai) => {
+          if (nilai === 0) return 1;
+          return nilai * hitung(nilai - 1);
+        };
+        output.innerHTML = `<p> hasilnya faktorial dari ${nilai}! adalah ${hitung(
+          nilai
+        )} </p>`;
+      }
+
+      function logic() {
+        const nilai = document.getElementById("jumlah").value;
+        const output = document.getElementById("hasil3");
+
+        for (let i = 1; i <= nilai; i++) {
+          if (i % 3 == 0 && i % 5 == 0) {
+            console.log(i, "fizzbuzz");
+          } else if (i % 3 == 0) {
+            console.log(i, "fizz");
+          } else if (i % 5 == 0) {
+            console.log(i, "buzz");
+          } else {
+            console.log(i);
+          }
+        }
+      }
+
+      function findMaxMin() {
+        const output = document.getElementById("hasil4");
+        const arr = [5, 4, 9, 10, 60];
+
+        var max = Math.max.apply(Math, arr);
+        var min = Math.min.apply(Math, arr);
+
+        output.innerHTML = `<p>Terbesar : ${max} , terkecil ${min}</p>`;
+      }
+    </script>
+  </body>
+</html>
